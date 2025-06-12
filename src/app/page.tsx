@@ -19,13 +19,12 @@ function HeroSection() {
   return (
     <div className="relative h-[70vh] md:h-[80vh] w-full overflow-hidden rounded-lg shadow-xl">
       <Image
-        src="https://placehold.co/1600x900.png"
-        alt="Restaurant ambiance"
+        src="https://source.unsplash.com/random/1600x900?restaurant,interior,ambiance"
+        alt="Expansive view of Culinary Canvas's elegant restaurant interior, bustling with diners enjoying their meals under warm, ambient lighting."
         layout="fill"
         objectFit="cover"
         priority
         className="brightness-75"
-        data-ai-hint="restaurant interior"
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 bg-black/50">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold text-white mb-4 drop-shadow-lg">
@@ -53,12 +52,11 @@ function AboutSection() {
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <Image
-            src="https://placehold.co/600x400.png"
-            alt="Restaurant cuisine"
+            src="https://source.unsplash.com/random/600x400?gourmet,dish,food,plate"
+            alt="Artistically plated gourmet dish from Culinary Canvas, featuring vibrant ingredients and intricate culinary details."
             width={600}
             height={400}
             className="rounded-lg shadow-lg"
-            data-ai-hint="gourmet dish"
           />
         </div>
         <div className="text-lg text-foreground/80 space-y-4">
@@ -115,7 +113,6 @@ function ChefsSection() {
                 width={300}
                 height={300}
                 className="object-cover w-full h-full"
-                data-ai-hint={chef.photoAiHint}
               />
             </div>
             <div className="sm:w-2/3">

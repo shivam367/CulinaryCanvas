@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from 'lucide-react';
 
 export type Award = {
@@ -11,7 +12,6 @@ export type Chef = {
   id: string;
   name: string;
   photoUrl: string;
-  photoAiHint?: string;
   bio: string;
   specialty: string;
 };
@@ -22,7 +22,6 @@ export type MenuItem = {
   description: string;
   price: number;
   imageUrl?: string;
-  imageAiHint?: string;
   type: "veg" | "non-veg" | "vegan" | "gluten-free"; // Example types
   category?: "Starters" | "Mains" | "Desserts" | "Beverages";
 };
@@ -41,7 +40,6 @@ export type BlogPost = {
   excerpt: string;
   date: string;
   imageUrl: string;
-  imageAiHint?: string;
   content: string; // Full content for the blog post page
   author?: string; // Optional
 };

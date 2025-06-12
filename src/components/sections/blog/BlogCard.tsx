@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { BlogPost } from '@/lib/types';
@@ -19,7 +20,6 @@ export function BlogCard({ post }: BlogCardProps) {
             alt={post.title}
             layout="fill"
             objectFit="cover"
-            data-ai-hint={post.imageAiHint}
           />
         </div>
       </Link>

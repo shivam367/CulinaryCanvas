@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import type { MenuItem } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -21,7 +22,6 @@ export function MenuItemCard({ item, onAddToCart, showAddToCartButton = false }:
             alt={item.name}
             layout="fill"
             objectFit="cover"
-            data-ai-hint={item.imageAiHint}
           />
         </div>
       )}

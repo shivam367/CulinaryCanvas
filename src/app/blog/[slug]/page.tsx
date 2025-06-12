@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { MOCK_BLOG_POSTS } from '@/lib/constants';
@@ -63,7 +64,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               layout="fill"
               objectFit="cover"
               priority
-              data-ai-hint={post.imageAiHint}
             />
           </div>
         )}

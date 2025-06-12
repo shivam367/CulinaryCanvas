@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import type { CartItem as CartItemType } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -28,7 +29,6 @@ export function CartItem({ item, onUpdateQuantity, onRemoveItem }: CartItemProps
           width={80}
           height={80}
           className="rounded-md object-cover"
-          data-ai-hint={item.imageAiHint}
         />
       )}
       <div className="flex-grow">
