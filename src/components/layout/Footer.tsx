@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { APP_NAME, SOCIAL_LINKS, SWIGGY_LINK, ZOMATO_LINK } from "@/lib/constants";
 import Logo from "@/components/shared/Logo";
@@ -7,7 +8,7 @@ import { UtensilsCrossed, ShoppingBag } from "lucide-react"; // Using generic ic
 export function Footer() {
   return (
     <footer className="bg-muted/50 text-muted-foreground mt-auto">
-      <div className="container py-12">
+      <div className="container py-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
             <Logo className="h-10 w-auto mb-4" />
