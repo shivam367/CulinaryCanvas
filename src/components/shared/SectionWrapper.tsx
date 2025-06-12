@@ -1,3 +1,4 @@
+
 import type { HTMLAttributes, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -25,7 +26,7 @@ export function SectionWrapper({
         {(title || subtitle) && (
           <div className="mb-8 md:mb-12 text-center">
             {title && (
-              <h2 className={cn("text-3xl md:text-4xl font-headline font-bold text-primary mb-2", titleClassName)}>
+              <h2 className={cn("text-3xl md:text-4xl font-headline font-bold text-foreground mb-2", titleClassName)}>
                 {title}
               </h2>
             )}

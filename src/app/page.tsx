@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Award as AwardIcon, Star, Trophy, Utensils, MapPin, Users } from 'lucide-react';
@@ -90,7 +91,7 @@ function AwardsSection() {
                 <div className="mx-auto bg-primary/10 text-primary p-3 rounded-full w-fit mb-2">
                   <IconComponent className="h-8 w-8" />
                 </div>
-                <CardTitle className="font-headline">{award.name}</CardTitle>
+                <CardTitle className="font-headline text-primary">{award.name}</CardTitle>
                 <CardDescription>{award.year}</CardDescription>
               </CardHeader>
             </Card>
@@ -119,7 +120,7 @@ function ChefsSection() {
             </div>
             <div className="sm:w-2/3">
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">{chef.name}</CardTitle>
+                <CardTitle className="font-headline text-2xl text-primary">{chef.name}</CardTitle>
                 <CardDescription className="text-primary">{chef.specialty}</CardDescription>
               </CardHeader>
               <CardContent>
