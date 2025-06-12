@@ -3,12 +3,12 @@ import Link from "next/link";
 import { APP_NAME, SOCIAL_LINKS, SWIGGY_LINK, ZOMATO_LINK } from "@/lib/constants";
 import Logo from "@/components/shared/Logo";
 import { Separator } from "@/components/ui/separator";
-import { UtensilsCrossed, ShoppingBag } from "lucide-react"; // Using generic icons for Swiggy/Zomato
+import { UtensilsCrossed, ShoppingBag } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="bg-muted/50 text-muted-foreground mt-auto">
-      <div className="container py-4">
+      <div className="container py-4 px-4 md:px-6"> {/* Added px-4 md:px-6 for consistency */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
             <Logo className="h-10 w-auto mb-4" />
@@ -32,7 +32,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center md:items-end">
-            <h4 className="font-headline text-lg text-foreground mb-2">Connect With Us</h4>
+            <h4 className="font-headline text-lg text-foreground mb-2 text-center md:text-right">Connect With Us</h4>
             <div className="flex space-x-4">
               {SOCIAL_LINKS.map((social) => (
                 <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}>

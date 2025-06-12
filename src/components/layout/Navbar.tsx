@@ -3,8 +3,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Menu } from "lucide-react"; // Removed X as it's part of SheetClose
+import { useState } from "react";
 
 import Logo from "@/components/shared/Logo";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -23,14 +23,14 @@ export function Navbar() {
       suppressHydrationWarning={true}
     >
       <div 
-        className="container flex py-4 max-w-screen-2xl items-center justify-between"
+        className="container flex items-center justify-between py-4 px-4 md:px-6"
         suppressHydrationWarning={true}
       >
         <Link href="/" className="flex items-center space-x-2" aria-label={`${APP_NAME} home page`}>
           <Logo className="h-8 w-auto" />
         </Link>
 
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -47,7 +47,7 @@ export function Navbar() {
 
         <div className="flex items-center space-x-2">
           <ThemeToggle />
-          <div className="md:hidden">
+          <div className="lg:hidden"> {/* Changed from md:hidden to lg:hidden */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" aria-label="Open menu">
