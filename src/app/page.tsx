@@ -38,7 +38,7 @@ function HeroSection() {
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
             <Link href="/reservations">Reserve a Table</Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
+          <Button asChild variant="outline" size="lg" className="text-white border-white bg-transparent hover:bg-white/10">
             <Link href="/menu">View Menu</Link>
           </Button>
         </div>
