@@ -17,6 +17,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ShoppingCart, User, Phone, HomeIcon, CheckCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from '@/components/ui/badge';
 
 const allMenuItems: MenuItem[] = Object.values(MOCK_MENU_ITEMS).flat();
 const categories = Object.keys(MOCK_MENU_ITEMS) as Array<keyof typeof MOCK_MENU_ITEMS>;
