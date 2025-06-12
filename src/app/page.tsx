@@ -19,7 +19,7 @@ function HeroSection() {
   return (
     <div className="relative h-[70vh] md:h-[80vh] w-full overflow-hidden rounded-lg shadow-xl">
       <Image
-        src="https://source.unsplash.com/featured/1200x800/?restaurant,interior,elegant,dining"
+        src="/media/hero-restaurant-interior.jpg"
         alt="Expansive view of Culinary Canvas's elegant restaurant interior, bustling with diners enjoying their meals under warm, ambient lighting."
         layout="fill"
         objectFit="cover"
@@ -52,7 +52,7 @@ function AboutSection() {
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <Image
-            src="https://source.unsplash.com/featured/600x400/?gourmet,dish,food,plate"
+            src="/media/gourmet-dish-plate.jpg"
             alt="Artistically plated gourmet dish from Culinary Canvas, featuring vibrant ingredients and intricate culinary details."
             width={600}
             height={400}

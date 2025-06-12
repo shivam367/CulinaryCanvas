@@ -35,14 +35,14 @@ export const MOCK_CHEFS: Chef[] = [
   {
     id: "1",
     name: "Chef Julianne",
-    photoUrl: "https://source.unsplash.com/featured/300x300/?female,chef,portrait,kitchen",
+    photoUrl: "/media/chef-julianne-portrait.jpg",
     bio: "Classically trained in French cuisine, Chef Julianne brings a modern twist to timeless dishes.",
     specialty: "Coq au Vin Revisited",
   },
   {
     id: "2",
     name: "Chef Ricardo",
-    photoUrl: "https://source.unsplash.com/featured/300x300/?male,chef,portrait,culinary",
+    photoUrl: "/media/chef-ricardo-portrait.jpg",
     bio: "With a passion for sustainable ingredients, Chef Ricardo crafts flavorful Italian-inspired creations.",
     specialty: "Wild Mushroom Risotto",
   },
@@ -50,17 +50,17 @@ export const MOCK_CHEFS: Chef[] = [
 
 export const MOCK_MENU_ITEMS: { [category: string]: MenuItem[] } = {
   Starters: [
-    { id: "s1", name: "Bruschetta al Pomodoro", description: "Grilled bread rubbed with garlic and topped with fresh tomatoes, basil, and olive oil.", price: 12.99, imageUrl: "https://source.unsplash.com/featured/400x300/?bruschetta,italian,appetizer", type: "veg" },
-    { id: "s2", name: "Crispy Calamari", description: "Lightly battered and fried calamari served with a zesty marinara sauce.", price: 15.99, imageUrl: "https://source.unsplash.com/featured/400x300/?calamari,seafood,appetizer", type: "non-veg" },
+    { id: "s1", name: "Bruschetta al Pomodoro", description: "Grilled bread rubbed with garlic and topped with fresh tomatoes, basil, and olive oil.", price: 12.99, imageUrl: "/media/menu-bruschetta.jpg", type: "veg" },
+    { id: "s2", name: "Crispy Calamari", description: "Lightly battered and fried calamari served with a zesty marinara sauce.", price: 15.99, imageUrl: "/media/menu-calamari.jpg", type: "non-veg" },
   ],
   Mains: [
-    { id: "m1", name: "Filet Mignon", description: "8oz prime cut filet, grilled to perfection, served with potato gratin and asparagus.", price: 38.99, imageUrl: "https://source.unsplash.com/featured/400x300/?filet,mignon,steak", type: "non-veg" },
-    { id: "m2", name: "Pasta Primavera", description: "Fresh pasta tossed with seasonal vegetables in a light cream sauce.", price: 22.99, imageUrl: "https://source.unsplash.com/featured/400x300/?pasta,primavera,vegetarian", type: "veg" },
-    { id: "m3", name: "Grilled Salmon", description: "Atlantic salmon fillet with a lemon-dill sauce, served with roasted vegetables.", price: 29.99, imageUrl: "https://source.unsplash.com/featured/400x300/?grilled,salmon,seafood", type: "non-veg" },
+    { id: "m1", name: "Filet Mignon", description: "8oz prime cut filet, grilled to perfection, served with potato gratin and asparagus.", price: 38.99, imageUrl: "/media/menu-filet-mignon.jpg", type: "non-veg" },
+    { id: "m2", name: "Pasta Primavera", description: "Fresh pasta tossed with seasonal vegetables in a light cream sauce.", price: 22.99, imageUrl: "/media/menu-pasta-primavera.jpg", type: "veg" },
+    { id: "m3", name: "Grilled Salmon", description: "Atlantic salmon fillet with a lemon-dill sauce, served with roasted vegetables.", price: 29.99, imageUrl: "/media/menu-grilled-salmon.jpg", type: "non-veg" },
   ],
   Desserts: [
-    { id: "d1", name: "Tiramisu", description: "Classic Italian dessert made with mascarpone, coffee-soaked ladyfingers, and cocoa.", price: 10.99, imageUrl: "https://source.unsplash.com/featured/400x300/?tiramisu,dessert,italian", type: "veg" },
-    { id: "d2", name: "Chocolate Lava Cake", description: "Warm chocolate cake with a molten center, served with vanilla bean ice cream.", price: 11.99, imageUrl: "https://source.unsplash.com/featured/400x300/?chocolate,lava,cake,dessert", type: "veg" },
+    { id: "d1", name: "Tiramisu", description: "Classic Italian dessert made with mascarpone, coffee-soaked ladyfingers, and cocoa.", price: 10.99, imageUrl: "/media/menu-tiramisu.jpg", type: "veg" },
+    { id: "d2", name: "Chocolate Lava Cake", description: "Warm chocolate cake with a molten center, served with vanilla bean ice cream.", price: 11.99, imageUrl: "/media/menu-chocolate-lava-cake.jpg", type: "veg" },
   ],
   Beverages: [
     { id: "b1", name: "Fresh Lemonade", description: "House-made with fresh lemons.", price: 5.99, type: "veg" },
@@ -80,7 +80,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     title: "A Journey Through Flavors: Our New Seasonal Menu",
     excerpt: "Discover the inspiration behind our latest seasonal dishes, crafted with the freshest local ingredients.",
     date: "2024-07-15",
-    imageUrl: "https://source.unsplash.com/featured/600x400/?seasonal,ingredients,fresh,food",
+    imageUrl: "/media/blog-seasonal-ingredients.jpg",
     content: "Our chefs have been working tirelessly to bring you a menu that celebrates the best of the current season. From farm-fresh vegetables to sustainably sourced seafood, every dish tells a story of quality and passion. Join us to experience these new culinary delights.\n\nWe believe in the farm-to-table philosophy, ensuring that every ingredient is at its peak freshness. This not only enhances the flavor but also supports our local farmers and producers. Come taste the difference that fresh, seasonal ingredients make!"
   },
   {
@@ -88,7 +88,7 @@ export const MOCK_BLOG_POSTS: BlogPost[] = [
     title: "Meet the Artisans: An Evening with Our Head Chefs",
     excerpt: "Get to know the culinary masterminds behind Culinary Canvas and their passion for gastronomy.",
     date: "2024-06-28",
-    imageUrl: "https://source.unsplash.com/featured/600x400/?chefs,cooking,kitchen,team",
+    imageUrl: "/media/blog-chefs-cooking.jpg",
     content: "Join us for an exclusive event where you can meet Chef Julianne and Chef Ricardo. They will share their culinary journeys, inspirations, and the philosophy that guides their creations at Culinary Canvas. This is a unique opportunity to connect with the artists who make your dining experience unforgettable.\n\nThey will also be demonstrating some of their signature techniques and offering a tasting menu featuring some of their most beloved dishes. Don't miss this chance to delve deeper into the world of Culinary Canvas."
   },
 ];
