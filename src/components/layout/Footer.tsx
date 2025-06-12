@@ -8,7 +8,7 @@ import { UtensilsCrossed, ShoppingBag } from "lucide-react";
 export function Footer() {
   return (
     <footer className="bg-muted/50 text-muted-foreground mt-auto">
-      <div className="container py-4 px-4 md:px-6"> {/* Added px-4 md:px-6 for consistency */}
+      <div className="container mx-auto max-w-screen-xl px-4 py-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
             <Logo className="h-10 w-auto mb-4" />

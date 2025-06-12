@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react"; // Removed X as it's part of SheetClose
+import { Menu } from "lucide-react";
 import { useState } from "react";
 
 import Logo from "@/components/shared/Logo";
@@ -18,12 +18,12 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header 
+    <header
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       suppressHydrationWarning={true}
     >
-      <div 
-        className="container flex items-center justify-between py-4 px-4 md:px-6"
+      <div
+        className="container mx-auto flex max-w-screen-xl items-center justify-between px-4 py-4 md:px-6"
         suppressHydrationWarning={true}
       >
         <Link href="/" className="flex items-center space-x-2" aria-label={`${APP_NAME} home page`}>
@@ -47,7 +47,7 @@ export function Navbar() {
 
         <div className="flex items-center space-x-2">
           <ThemeToggle />
-          <div className="lg:hidden"> {/* Changed from md:hidden to lg:hidden */}
+          <div className="lg:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" aria-label="Open menu">
