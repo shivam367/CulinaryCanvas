@@ -1,3 +1,4 @@
+
 "use client";
 import type { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -10,7 +11,7 @@ type ThemeProviderProps = {
   storageKey?: string;
   attribute?: string;
   enableSystem?: boolean;
-  disableTransitionOnChange?: boolean; // Added to match RootLayout props, though not fully implemented here
+  disableTransitionOnChange?: boolean;
 };
 
 type ThemeProviderState = {
@@ -22,6 +23,7 @@ type ThemeProviderState = {
 const initialState: ThemeProviderState = {
   theme: "system",
   setTheme: () => null,
+  resolvedTheme: undefined,
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
@@ -30,56 +32,87 @@ export function ThemeProvider({
   children,
   defaultTheme = "system",
   storageKey = "culinary-canvas-theme",
-  attribute = "class", // Typically "class" for adding .dark or .light to html tag
+  attribute = "class",
   enableSystem = true,
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === 'undefined') {
-      return defaultTheme;
-    }
-    return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
-  });
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">();
+  const [theme, setTheme] = useState<Theme>(defaultTheme); // Initialize with defaultTheme
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark" | undefined>(undefined);
+  const [mounted, setMounted] = useState(false);
 
+  // Effect to set mounted and load theme from localStorage
   useEffect(() => {
+    setMounted(true);
+    let initialUserTheme = defaultTheme;
+    try {
+      const storedTheme = localStorage.getItem(storageKey) as Theme;
+      if (storedTheme && (storedTheme === "light" || storedTheme === "dark" || storedTheme === "system")) {
+        initialUserTheme = storedTheme;
+      }
+    } catch (e) {
+      console.warn("Failed to access localStorage for theme", e);
+    }
+    setTheme(initialUserTheme);
+  }, [storageKey, defaultTheme]);
+
+  // Effect to apply theme to DOM and set resolvedTheme
+  useEffect(() => {
+    if (!mounted) {
+      // On the server, or before client has mounted, determine resolvedTheme without window if possible
+      if (defaultTheme === "light" || defaultTheme === "dark") {
+        setResolvedTheme(defaultTheme);
+      } else {
+        // defaultTheme is 'system', cannot resolve on server / pre-mount
+        setResolvedTheme(undefined); 
+      }
+      return;
+    }
+
     const root = window.document.documentElement;
-    const currentTheme = theme === "system" && enableSystem
-      ? window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-      : theme === "dark" ? "dark" : "light";
+    let currentAppliedTheme: "light" | "dark";
+
+    if (theme === "system" && enableSystem) {
+      currentAppliedTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    } else {
+      currentAppliedTheme = theme === "dark" ? "dark" : "light";
+    }
     
-    setResolvedTheme(currentTheme);
+    setResolvedTheme(currentAppliedTheme);
 
     root.classList.remove("light", "dark");
     if (attribute === "class") {
-      root.classList.add(currentTheme);
+      root.classList.add(currentAppliedTheme);
     } else {
-      root.setAttribute(attribute, currentTheme);
+      root.setAttribute(attribute, currentAppliedTheme);
     }
-  }, [theme, enableSystem, attribute]);
+  }, [theme, mounted, enableSystem, attribute, defaultTheme]);
 
-
+  // Effect to listen to system theme changes
   useEffect(() => {
-    if (!enableSystem || theme !== 'system' || typeof window === 'undefined') return;
+    if (!mounted || !enableSystem || theme !== 'system') return;
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
-       // Force re-evaluation of useEffect above
-      setTheme(prev => prev === 'system' ? 'system' : prev);
+      // If the current theme is 'system', this will trigger the main effect to re-evaluate
+      setTheme('system'); 
     };
+
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [enableSystem, theme]);
-
+  }, [mounted, enableSystem, theme]);
 
   const value = {
     theme,
     setTheme: (newTheme: Theme) => {
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(storageKey, newTheme);
+      if (mounted) {
+        try {
+          localStorage.setItem(storageKey, newTheme);
+        } catch (e) {
+          console.warn("Failed to set theme in localStorage", e);
+        }
       }
       setTheme(newTheme);
     },
-    resolvedTheme,
+    resolvedTheme: mounted ? resolvedTheme : (defaultTheme === "light" || defaultTheme === "dark" ? defaultTheme : undefined),
   };
 
   return (
