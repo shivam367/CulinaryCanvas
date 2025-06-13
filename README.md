@@ -3,16 +3,16 @@
 
 Welcome to Culinary Canvas, an elegant web application for a modern restaurant. This platform allows users to explore the restaurant's offerings, make reservations, order food online, read blog posts, and provide feedback.
 
-## 1. Core Features (Culinary Canvas)
+## 1. Core Features
 
-*   **Home Showcase**: Landing page showcasing the restaurant's ambiance, cuisine, location, awards, and chef information.
-*   **Table Reservations**: Interactive reservation form with date, time, and seating options.
-*   **Menu Display**: Categorized menu with dish names, descriptions, prices, and dietary options.
-*   **Online Order**: Online ordering system to select dishes and manage cart; visual total at checkout.
-*   **Feedback Form**: Form for customer feedback; displays recent reviews.
-*   **Contact Details**: Restaurant contact info: email, phone, location (Google Maps); links to Swiggy/Zomato pages.
-*   **Blog**: Page to display promotional or informational blog posts.
-*   **Theme Toggle**: Switch between light and dark mode.
+*   **Home Showcase**: Landing page displaying the restaurant's ambiance, cuisine philosophy, location highlights, mock awards, and information about its (mock) chefs.
+*   **Table Reservations**: An interactive form allowing users to select a date, time, number of guests, and seating preference to book a table.
+*   **Menu Display**: A categorized menu showcasing various dishes with names, detailed descriptions, prices, and dietary information (e.g., veg, non-veg). Users can filter items by dietary type.
+*   **Online Order**: An online ordering system where users can browse menu items by category, add dishes to a cart, manage cart item quantities, view a running total, and simulate a checkout process with a form for delivery details.
+*   **Feedback Form**: A dedicated page for customers to submit their name (optional), a star rating, and comments. Recent (mock) reviews are displayed.
+*   **Contact Details**: Comprehensive contact information including email, phone number, physical address with a Google Maps link, and direct links to the restaurant's (placeholder) Swiggy and Zomato pages. Social media links are also provided.
+*   **Blog**: A section to display promotional or informational blog posts with individual post pages for detailed reading.
+*   **Theme Toggle**: A user interface control to switch the application's appearance between light and dark modes, with preferences persisted in `localStorage`.
 
 ## 2. Tech Stack
 
@@ -20,176 +20,214 @@ Welcome to Culinary Canvas, an elegant web application for a modern restaurant. 
 *   **Language**: TypeScript
 *   **UI Library**: React
 *   **Component Library**: ShadCN UI
-*   **Styling**: Tailwind CSS, CSS HSL Variables for theming
-*   **AI Integration**: Genkit (with Google Gemini models)
-*   **Form Handling**: React Hook Form, Zod for validation
+*   **Styling**: Tailwind CSS, with CSS HSL Variables for robust theming (light/dark modes).
+*   **AI Integration**: Genkit (configured with Google Gemini models, e.g., `googleai/gemini-2.0-flash`). Currently, AI features are placeholders (like a simulated politeness check on feedback) with the infrastructure ready for more advanced implementations.
+*   **Form Handling**: React Hook Form, with Zod for schema validation.
+*   **State Management**: Primarily React Context and component state.
+*   **Deployment**: Configured for Firebase App Hosting (see `apphosting.yaml`).
 
-## 3. Design & Technical Specifications Template
-
-_The following sections are based on a comprehensive template provided, detailing design, AI, and technical specifications. Some content may be illustrative of how such an application would be documented and might refer to features or specifics not yet implemented or differently implemented in the current "Culinary Canvas" restaurant application._
+## 3. Design & Technical Specifications
 
 ### 3.1. Webpage Design UI (Responsive Web Application for Desktop & Mobile)
+The application is designed to be fully responsive, adapting its layout and components for optimal viewing and interaction across desktops, tablets, and mobile devices. Key considerations include readable text, touch-friendly targets, and efficient use of screen real estate.
 
-_(This section outlines general design goals, similar to what Culinary Canvas aims for)_
-________________________________________
 ### 3.2. Brand Identity & Design Specifications
-________________________________________
+
 #### 3.2.1. Typography
+*(As defined in `tailwind.config.ts` and `src/app/layout.tsx`)*
 
-*(Note: Culinary Canvas currently uses 'Playfair Display' for headlines and 'PT Sans' for body text, as defined in `tailwind.config.ts` and `src/app/layout.tsx`. The following is an illustrative example of detailed typography specification from the provided template.)*
+*   **Headline Font**: 'Playfair Display', serif (Used for main page titles, section headings, card titles, and the brand logo)
+    *   _Implicit Sizes (based on usage)_:
+        *   Logo/Brand Name: ~36px
+        *   Hero Titles: 4xl-6xl (Tailwind: 2.25rem - 3.75rem)
+        *   Section Titles: 3xl-4xl (Tailwind: 1.875rem - 2.25rem)
+        *   Card Titles: xl-2xl (Tailwind: 1.25rem - 1.5rem)
+*   **Body Font**: 'PT Sans', sans-serif (Used for general text content, descriptions, button text, form labels, etc.)
+    *   _Implicit Sizes (based on usage)_:
+        *   Paragraphs/Descriptions: sm-lg (Tailwind: 0.875rem - 1.125rem)
+        *   Button Text: sm (Tailwind: 0.875rem)
+        *   Input/Label Text: sm (Tailwind: 0.875rem)
+*   **Code Font**: `monospace` (Fallback, defined in `tailwind.config.ts` but not prominently used in current UI).
 
-● Main Heading Font (e.g., Page Titles): Poppins (Bold, 36px - 48px)
-● Section Heading Font (e.g., Card Titles): Poppins (Semibold, 24px - 30px)
-● Sub Heading Font: Poppins (Medium, 18px - 22px)
-● Text Content Font (Body): Inter (Regular, 16px)
-● Small/Supporting Text Font: Inter (Regular, 12px - 14px)
-● Button Text Font: Inter (Medium, 14px - 16px)
-● Code Font (Conceptual, for AI interaction/display): Consolas, 'Courier New', monospace
-● Brand Name & Logo Font: Poppins (Bold, typically matches main heading size in header)
-________________________________________
-#### 3.2.2. Color Scheme (Effective Theme from globals.css & tailwind.config.ts)
+#### 3.2.2. Color Scheme (Effective Theme from `src/app/globals.css`)
 
-*(Note: Culinary Canvas has its own color scheme defined in `src/app/globals.css` featuring reddish-browns and orange-reds. The following is an illustrative example of a detailed color scheme specification from the provided template.)*
+The application uses a warm, inviting color palette centered around browns, reddish-browns, and orange-reds, evoking a sophisticated yet comfortable dining atmosphere.
 
-Core Theme HSL Variables:
-● Primary (Emerald Green):
- ○ Light Mode: hsl(142.1 76.2% 36.3%) (#10b981 approx.)
- ○ Dark Mode: hsl(142.1 70.6% 45.3%) (#16a34a approx.)
-● Accent (Blueish):
- ○ Light Mode: hsl(200 70% 60%) (#4cbce8 approx.)
- ○ Dark Mode: hsl(200 60% 35%) (#247ba0 approx.)
-● Background:
- ○ Light Mode: hsl(0 0% 100%) (#FFFFFF)
- ○ Dark Mode: hsl(20 14.3% 4.1%) (#0c0a09)
-● Foreground (Text):
- ○ Light Mode: hsl(240 10% 3.9%) (#09090b)
- ○ Dark Mode: hsl(0 0% 95%) (#f2f2f2)
-● Card Background:
- ○ Light Mode: hsl(0 0% 100%) (#FFFFFF)
- ○ Dark Mode: hsl(24 9.8% 10%) (#1c1917)
-● Border:
- ○ Light Mode: hsl(214.3 31.8% 91.4%) (#e5e7eb)
- ○ Dark Mode: hsl(240 3.7% 15.9%) (#262626)
-● Destructive (Errors/Warnings):
- ○ Light Mode: hsl(0 84.2% 60.2%) (#f43f5e)
- ○ Dark Mode: hsl(0 62.8% 30.6%) (#9f1239)
+**Core Theme HSL Variables (Light Mode / Dark Mode):**
 
-Original PRD Brand Palette Intentions (from template):
-● Brand Primary: Dark Blue (#0f172a)
-● Brand Accent: Emerald (#10b981) - (This is used as theme primary in template)
-● Brand Light Background: Off-white (#f8f9fa)
-________________________________________
-#### 3.2.3. 🌙 Dark Mode & ☀️ Light Mode Variants (Effective Implementation)
+*   **Background**:
+    *   Light: `hsl(25 50% 91.6%)` (#F5E7DE - Desaturated brown)
+    *   Dark: `hsl(25 30% 13%)` (#2A1F18 - Very dark brown)
+*   **Foreground (Text)**:
+    *   Light: `hsl(25 32% 21%)` (#3D2B1F - Dark brown)
+    *   Dark: `hsl(25 25% 85%)` (#E0D8D3 - Light grayish brown)
+*   **Primary (Key Brand Color, Headings, Accents)**:
+    *   Light: `hsl(25 71% 31%)` (#8B4513 - Saturated reddish-brown)
+    *   Dark: `hsl(25 57% 45%)` (#A0522D - Lighter reddish-brown, Sienna)
+*   **Primary Foreground (Text on Primary Backgrounds)**:
+    *   Light: `hsl(25 50% 95%)` (Light cream)
+    *   Dark: `hsl(25 25% 90%)` (Brighter cream)
+*   **Accent (Interactive Elements, Highlights)**:
+    *   Light: `hsl(25 75% 47%)` (#D2691E - Orange-red, Chocolate)
+    *   Dark: `hsl(25 80% 60%)` (#E87A30 - Lighter orange-red)
+*   **Accent Foreground (Text on Accent Backgrounds)**:
+    *   Light: `hsl(0 0% 100%)` (White)
+    *   Dark: `hsl(25 30% 10%)` (Very dark brown)
+*   **Card Background**:
+    *   Light: `hsl(25 30% 97%)` (Warmer white)
+    *   Dark: `hsl(25 32% 21%)` (#3D2B1F - Dark brown)
+*   **Card Foreground**:
+    *   Light: `hsl(25 32% 21%)` (Dark brown)
+    *   Dark: `hsl(25 25% 85%)` (Light grayish brown)
+*   **Border**:
+    *   Light: `hsl(25 40% 80%)` (Brownish border)
+    *   Dark: `hsl(25 25% 30%)` (Darker border)
+*   **Input Background**:
+    *   Light: `hsl(25 40% 82%)` (Slightly lighter for input)
+    *   Dark: `hsl(25 25% 33%)` (Slightly lighter for input on dark)
+*   **Destructive (Errors, Warnings)**:
+    *   Light: `hsl(0 84.2% 60.2%)` (#f43f5e)
+    *   Dark: `hsl(0 62.8% 30.6%)` (#9f1239)
 
-*(Note: Culinary Canvas implements dark/light mode via `ThemeProvider` and CSS variables in `globals.css`. The following illustrates a detailed breakdown from the template.)*
+#### 3.2.3. 🌙 Dark Mode & ☀️ Light Mode Variants
+Implemented using `ThemeProvider` (`src/components/layout/ThemeProvider.tsx`) and CSS custom properties (variables) in `src/app/globals.css`. The theme system dynamically applies styles for:
+*   Backgrounds (page, cards, popovers)
+*   Text colors (foreground, muted foreground, primary, accent)
+*   Button styles (primary, secondary, accent variants)
+*   Borders and input field styles
+*   Chart colors (though charts are not yet implemented)
 
-● Light Mode:
- ○ Background: hsl(0 0% 100%) (#FFFFFF)
- ○ Text: hsl(240 10% 3.9%) (#09090b)
- ○ Primary Buttons: Background hsl(142.1 76.2% 36.3%) (Emerald), Text hsl(355.7 100% 97.3%)
- ○ Accent Elements: Color hsl(200 70% 60%) (Blueish)
-● Dark Mode:
- ○ Background: hsl(20 14.3% 4.1%) (#0c0a09)
- ○ Text: hsl(0 0% 95%) (#f2f2f2)
- ○ Primary Buttons: Background hsl(142.1 70.6% 45.3%) (Lighter Emerald), Text hsl(144.9 80.4% 10%)
- ○ Accent Elements: Color hsl(200 60% 35%) (Darker Blueish)
-________________________________________
-### 3.3. User Features & Main Pages (Illustrative Example from Template)
+### 3.3. User Features & Main Pages
 
-*(Note: The features listed below are from the provided template for an application called "NutriGuide AI" and serve as an example of how features might be documented. For actual Culinary Canvas features, see Section 1: Core Features.)*
-________________________________________
 #### 3.3.1. 👤 General User Experience
-The application is designed for general users seeking nutritional information and guidance related to Indian food products and recipes. There are no distinct user roles like 'admin' or 'partner' dashboards. All features are accessible to any visitor.
-________________________________________
-#### 3.3.2. 📌 Key Features (Template Example):
-•	Theme Toggle: Dark/light mode toggle with user preference persistence (localStorage).
-•	Smart Label Analysis:
- * Upload food label images (OCR via AI) for ingredient analysis.
- * Manually enter product details and ingredients.
- * AI-Generated Health Report: Includes detailed analysis, positive/potential concerns, key nutrients, overall health rating (1-5 stars), processing level rating, sugar content rating, nutrient density rating.
- * Healthier Indian Alternatives: Suggestions for better choices.
- * PDF Download: Option to download the generated health report.
-•	Contextual AI Chat (Product Analysis): Engage in AI chat related to the generated food label report.
-•	Indian Recipe Suggestions:
- * Input available ingredients, health concerns, and household size.
- * AI-Generated Meal Ideas: Suggests 2-5 healthy Indian dish names.
- * Detailed Recipe Generation: Provides full recipe for a selected dish (title, description, servings, prep/cook time, adjusted ingredients, instructions, health notes, tips).
- * PDF Download: Option to download the detailed recipe.
-•	Contextual AI Chat (Recipes): Engage in AI chat related to the generated recipe.
-•	Detailed Nutrition Check:
- * Upload nutrition table images or manually input values (calories, fats, vitamins, etc.).
- * AI-Generated Nutrition Analysis: Includes overall analysis, macronutrient balance, micronutrient highlights, dietary suitability, nutrition density rating, processing level assessment, serving size context.
- * PDF Download: Option to download the nutrition analysis report.
-•	Contextual AI Chat (Nutrition Analysis): Engage in AI chat related to the generated nutrition report.
-•	Blog: Articles on healthy eating, food labels, and Indian nutrition. Includes category filtering and individual post pages.
-•	Contact Page: Information for users to reach out.
-•	Responsive Design: Adapts to various screen sizes (desktop, tablet, mobile).
-________________________________________
-#### 3.3.3. 📍 Key Navigation Flows (Illustrative User Journeys from Template):
-1.	Food Label Analysis:
- User lands on Homepage → Navigates to "Analyze Label" page → Chooses image upload or manual input method → Submits data → Views AI Health Report → Optionally downloads PDF → Optionally engages in AI Chat about the report.
-2.	Recipe Suggestions:
- User lands on Homepage → Navigates to "Recipes" page → Enters available ingredients, health concerns, household size → Receives dish suggestions → Selects a dish → Views detailed AI-generated recipe → Optionally downloads PDF → Optionally engages in AI Chat about the recipe.
-3.	Nutrition Check:
- User lands on Homepage → Navigates to "Nutrition Check" page → Chooses image upload or manual input for nutritional values → Submits data → Views AI Nutrition Analysis → Optionally downloads PDF → Optionally engages in AI Chat about the analysis.
-4.	Blog Engagement:
- User lands on Homepage → Navigates to "Blog" page → Filters articles by category (optional) → Clicks on a blog post title/image → Reads the full blog post.
-5.	Theme Customization:
- User clicks theme toggle button (Sun/Moon icon) in Header → Interface switches between light and dark mode → Preference is saved in browser's localStorage.
-________________________________________
-### 3.4. 💡 Unique Selling Propositions / Key Differentiators (Illustrative Example from Template)
+The application is designed for restaurant patrons. There are no distinct user roles like 'admin'; all features are accessible to any visitor.
 
-*(Note: These USPs are from the provided "NutriGuide AI" template.)*
+#### 3.3.2. 📌 Key Pages & Functionality:
+*   **Homepage (`/`)**:
+    *   Hero section with imagery and call-to-action buttons (Reserve, View Menu).
+    *   "Our Story" section with descriptive text and an image.
+    *   "Accolades & Recognition" section displaying mock awards.
+    *   "Meet Our Culinary Artists" section showcasing mock chef profiles with images and bios.
+*   **Menu Page (`/menu`)**:
+    *   Displays menu items categorized (Starters, Mains, Desserts, Beverages).
+    *   Allows filtering by dietary preference (All, Veg, Non-Veg).
+    *   Each menu item is presented in a card with image, name, description, price, and dietary type.
+*   **Reservations Page (`/reservations`)**:
+    *   A form for users to input their name, email, desired date (via calendar picker), time (from a select list), number of guests, and seating preference (indoor/outdoor).
+    *   Includes form validation and displays a mock success message upon submission.
+*   **Order Online Page (`/order`)**:
+    *   Tabbed interface to browse menu items by category.
+    *   Users can add items to a cart.
+    *   A persistent cart summary displays items, quantities, and allows quantity updates or item removal.
+    *   An order summary calculates subtotal, taxes, and total.
+    *   A "Proceed to Checkout" button opens a modal with a form for name, phone, and address.
+    *   Includes form validation and displays a mock order confirmation.
+*   **Blog Page (`/blog`)**:
+    *   Displays a grid of blog post cards, each with an image, title, date, and excerpt.
+    *   Clicking a card navigates to the individual blog post page.
+*   **Individual Blog Post Page (`/blog/[slug]`)**:
+    *   Displays the full content of a selected blog post, including title, date, author (if any), category badge, and main image.
+    *   Styled for readability.
+*   **Feedback Page (`/feedback`)**:
+    *   A form for users to submit their name (optional), a star rating (1-5), and comments.
+    *   Simulates submission with a success message and updates a section displaying recent (mock) reviews.
+*   **Contact Page (`/contact`)**:
+    *   Displays contact information (email, phone, address with map link).
+    *   Provides direct links for ordering via Swiggy and Zomato.
+    *   Includes links to social media profiles.
 
-•	AI-Driven Indian Context: Focus on providing health reports and recipe alternatives relevant to Indian food products and dietary habits.
-•	Integrated Contextual AI Chat: Allows users to ask follow-up questions directly related to the specific AI-generated report (label, recipe, nutrition) they are viewing.
-•	Comprehensive AI Toolkit: Offers a suite of AI tools from label analysis to recipe generation and nutrition checking, all within one platform.
-•	User-Friendly Interface: Utilizes ShadCN UI components for a clean, modern, and accessible user experience.
-•	Client-Side AI Interaction: Leverages Genkit to call Gemini models for analysis and chat, providing dynamic content generation.
-________________________________________
-### 3.5. 📌 Data Flow & Backend (Illustrative Example from Template)
+#### 3.3.3. 📍 Key Navigation Flows:
+1.  **Making a Reservation**:
+    User lands on Homepage → Clicks "Reserve a Table" (or navigates via Navbar) → Lands on Reservations Page → Fills out name, email, date, time, guests, seating preference → Clicks "Reserve Table" → Sees success message.
+2.  **Ordering Food Online**:
+    User navigates to "Order Online" (via Navbar) → Browses menu items by category (Tabs) → Clicks "Add to Cart" on desired items → Cart updates on the right sidebar → User adjusts quantities or removes items in cart → Clicks "Proceed to Checkout" → Checkout modal appears → User fills in name, phone, address → Clicks "Place Order" → Sees success message, cart clears.
+3.  **Exploring the Menu**:
+    User lands on Homepage → Clicks "View Menu" (or navigates via Navbar) → Lands on Menu Page → Selects dietary filter (All, Veg, Non-Veg) → Clicks on category tabs (Starters, Mains, etc.) → Scrolls to view menu items in that category.
+4.  **Reading the Blog**:
+    User navigates to "Blog" (via Navbar) → Sees a list of blog posts → Clicks on a blog post title/image or "Read More" → Lands on the individual blog post page → Reads the article.
+5.  **Submitting Feedback**:
+    User navigates to "Feedback" (via Navbar) → Fills in name (optional), selects a star rating, types comments → Clicks "Submit Feedback" → Sees success message → Feedback (mock) appears in "Recent Reviews".
+6.  **Changing Theme**:
+    User clicks the theme toggle icon (Sun/Moon) in the Navbar → Interface switches between light and dark mode → Preference is saved in browser's `localStorage`.
 
-*(Note: Culinary Canvas is set up with Genkit. The following details specific AI flows from the provided template.)*
-________________________________________
-#### 3.5.1. 🤖 AI Model Integration:
-•	Core AI Engine: Genkit framework.
-•	Language Models: Google Gemini models (e.g., `gemini-2.0-flash` specified in `src/ai/genkit.ts` for Culinary Canvas).
-•	Capabilities Utilized (Template Example):
- * Text Generation: For health reports, recipe details, nutrition analysis, chat responses.
- * Image Understanding (Vision): For OCR from food labels and nutrition tables.
- * Structured Data Output: AI models are prompted to return data in specific JSON schemas (defined with Zod).
-•	AI Flows Defined (Template Example):
- * `generateHealthReport`: Analyzes food labels/ingredients.
- * `recipeSuggestions`: Suggests dishes based on inputs.
- * `getDetailedRecipe`: Generates full recipes.
- * `analyzeNutrition`: Analyzes nutritional data.
- * `contextAwareAIChat`: Powers contextual chat for reports.
-________________________________________
-#### 3.5.2. ☁️ Cloud Services:
-•	Google AI Platform: Utilized via the `@genkit-ai/googleai` plugin for accessing Gemini models. Requires `GOOGLE_API_KEY`.
-________________________________________
-#### 3.5.3. 🔒 User Data Management:
-•	Theme Preference: Stored client-side in the browser's localStorage (Implemented in Culinary Canvas).
-•	Uploaded Images/Input Data (Template Example): Transmitted to the backend (Genkit/Gemini) for processing. Not persistently stored by the application itself after the AI response is generated, as per current design.
-•	Generated Reports/Recipes/Analyses (Template Example): Displayed to the user dynamically. Not persistently stored on the server for individual users beyond the current session unless the user downloads a PDF.
-•	No user accounts or server-side session management beyond what Genkit might use for its operations.
-________________________________________
-### 3.6. ⚙️ UI Components & Design Patterns (Based on ShadCN UI & Custom Components)
-________________________________________
-#### 3.6.1. 🧩 Key UI Components Used (Culinary Canvas & Template):
-*(This list combines components generally used in ShadCN applications and those present in Culinary Canvas)*
-•	Layout & Navigation: Navbar (`Navbar.tsx`), Footer (`Footer.tsx`), Sheet (for mobile menu), Link (Next.js).
-•	Content Display: Card (extensively for menu items, blog posts, homepage sections), Alert (for success/error messages), Image (`next/image`), StarRatingDisplay/Input (custom components).
-•	Forms & Input: Form (React Hook Form), Input, Textarea, Select, Button, Calendar, Popover, RadioGroup.
-•	Interaction & Feedback: Dialog (for checkout), Toast (for notifications), Tooltip, ScrollArea, Separator, Tabs.
-•	Structure & Styling: `cn` utility for conditional classes, Tailwind CSS for overall styling.
-________________________________________
-#### 3.6.2. 🎨 Theming:
-•	Dark/Light Mode: Implemented via `ThemeProvider.tsx` which toggles a 'dark' class on the HTML element.
-•	CSS Variables: Extensive use of CSS HSL variables defined in `src/app/globals.css` for both light and dark themes, utilized by ShadCN components and custom styles.
-•	Responsive Design: Achieved using Tailwind CSS's responsive prefixes (sm, md, lg) and flex/grid layouts.
+### 3.4. 💡 Unique Selling Propositions / Key Differentiators (for a restaurant app)
 
-## 4. Getting Started (Culinary Canvas)
+*   **Elegant & Modern UI**: A visually appealing interface built with ShadCN UI and Tailwind CSS, providing a premium feel.
+*   **Comprehensive Functionality**: Covers key restaurant interactions: menu browsing, reservations, online ordering (simulated), and feedback.
+*   **Responsive Design**: Ensures a seamless experience across various devices.
+*   **Integrated Theming**: User-selectable light and dark modes enhance accessibility and user preference.
+*   **AI-Ready**: Infrastructure using Genkit is in place for future AI-powered enhancements (e.g., personalized recommendations, intelligent search, AI-powered customer service interactions).
+
+### 3.5. 📌 Data Flow & Backend
+
+#### 3.5.1. 🤖 AI Model Integration (Current Setup & Future Potential)
+*   **Core AI Engine**: Genkit framework (`src/ai/genkit.ts`).
+*   **Language Models**: Configured to use Google Gemini models (e.g., `googleai/gemini-2.0-flash` as specified in `src/ai/genkit.ts`).
+*   **Capabilities Utilized (Currently Mocked/Placeholder)**:
+    *   The feedback form includes a console log for "politeness check" which is a placeholder for a potential AI text analysis flow.
+*   **Future AI Flows (Potential - not yet implemented)**:
+    *   `analyzeFeedbackSentiment`: To process customer feedback for sentiment.
+    *   `menuRecommendations`: To suggest dishes based on user preferences or past orders.
+    *   `reservationAssistant`: An AI chatbot to help with booking tables.
+    *   `dishExplainer`: Provide more detailed AI-generated descriptions or pairing suggestions for menu items.
+    *   `blogPostGenerator`: Assist in drafting blog content.
+
+#### 3.5.2. ☁️ Cloud Services (Relevant to Genkit)
+*   **Google AI Platform**: Utilized via the `@genkit-ai/googleai` plugin for accessing Gemini models. Requires a `GOOGLE_API_KEY` in the environment.
+
+#### 3.5.3. 🔒 User Data Management
+*   **Theme Preference**: Stored client-side in the browser's `localStorage`.
+*   **Form Submissions (Reservations, Orders, Feedback)**: Currently, data is handled client-side.
+    *   Input data is collected using React Hook Form.
+    *   On submission, data is logged to the console (simulating a backend call).
+    *   Mock success messages are displayed to the user.
+    *   The feedback form updates a client-side list of (mock) recent reviews.
+*   **No Persistent User Accounts**: The application does not currently feature user registration or login.
+*   **No Server-Side Database for User Data**: Order history, reservation details, and feedback are not persistently stored on a server for individual users beyond the current mocked interactions.
+
+### 3.6. ⚙️ UI Components & Design Patterns
+
+#### 3.6.1. 🧩 Key UI Components Used (ShadCN UI & Custom)
+*   **Layout & Navigation**:
+    *   `Navbar` (`src/components/layout/Navbar.tsx`): Main site navigation, logo, theme toggle, mobile menu sheet.
+    *   `Footer` (`src/components/layout/Footer.tsx`): Site links, social media, copyright.
+    *   `ThemeProvider` (`src/components/layout/ThemeProvider.tsx`): Manages light/dark mode.
+    *   `SectionWrapper` (`src/components/shared/SectionWrapper.tsx`): Consistent styling for page sections.
+    *   `Sheet` (ShadCN): Used for the mobile navigation menu.
+    *   `Link` (Next.js): For client-side navigation.
+*   **Content Display**:
+    *   `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter` (ShadCN): Extensively used for menu items, blog posts, awards, chef profiles, feedback display, etc.
+    *   `Alert`, `AlertTitle`, `AlertDescription` (ShadCN): For success/error messages.
+    *   `Image` (`next/image`): For all images, ensuring optimization.
+    *   `StarRatingDisplay` (`src/components/shared/StarRatingDisplay.tsx`): Custom component to show star ratings.
+    *   `Badge` (ShadCN): For dietary tags, cart item count, blog categories.
+    *   `Separator` (ShadCN): For visual separation of content.
+    *   `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent` (ShadCN): For categorizing menu items and online order items.
+*   **Forms & Input**:
+    *   `Form`, `FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormMessage` (React Hook Form & ShadCN): Structure for all forms.
+    *   `Input` (ShadCN): For text fields.
+    *   `Textarea` (ShadCN): For multiline text input (e.g., feedback comments).
+    *   `Button` (ShadCN): For all interactive buttons.
+    *   `Calendar` (ShadCN): For date selection in reservations.
+    *   `Popover` (ShadCN): Used with the Calendar.
+    *   `Select`, `SelectTrigger`, `SelectContent`, `SelectItem` (ShadCN): For dropdowns (e.g., reservation time, seating preference).
+    *   `RadioGroup`, `RadioGroupItem` (ShadCN): For menu diet filters.
+    *   `StarRatingInput` (`src/components/shared/StarRatingInput.tsx`): Custom component for star rating input.
+*   **Interaction & Feedback**:
+    *   `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle` (ShadCN): Used for the online order checkout modal.
+    *   `Toast`, `Toaster`, `useToast` (ShadCN & custom hook): For non-intrusive notifications (though not heavily used yet).
+    *   `Tooltip` (ShadCN): For providing extra information on hover (e.g., theme toggle).
+    *   `ScrollArea` (ShadCN): Potentially for long content lists if needed.
+*   **Custom Shared Components**:
+    *   `Logo` (`src/components/shared/Logo.tsx`): SVG logo for the brand.
+
+#### 3.6.2. 🎨 Theming & Styling Approach
+*   **Dark/Light Mode**: Managed by `ThemeProvider` toggling a `.dark` class on the `<html>` element.
+*   **CSS HSL Variables**: Defined in `src/app/globals.css` for light and dark themes. These variables control colors for background, foreground, primary, accent, cards, borders, inputs, etc. ShadCN components and custom styles utilize these variables.
+*   **Tailwind CSS**: Used for all utility-first styling, including layout (flexbox, grid), spacing, typography, responsive design prefixes (`sm:`, `md:`, `lg:`), and more.
+*   **`cn` Utility**: (`src/lib/utils.ts`) Merges Tailwind classes and handles conditional class application.
+
+## 4. Getting Started
 
 Follow these instructions to get a local copy of Culinary Canvas up and running.
 
@@ -200,7 +238,7 @@ Follow these instructions to get a local copy of Culinary Canvas up and running.
 
 ### Environment Variables
 
-While Culinary Canvas doesn't strictly require environment variables for its current features to run, the Genkit setup (for potential AI features) typically relies on a `GOOGLE_API_KEY`. If you plan to develop or use AI features:
+For Genkit AI features (even if currently placeholders), a `GOOGLE_API_KEY` is typically required:
 
 1.  Create a `.env` file in the root of the project.
 2.  Add your Google AI API key:
@@ -252,29 +290,31 @@ This command bundles the application for production. You can then start the prod
 A brief overview of the key directories:
 
 *   `src/app/`: Contains all the Next.js App Router pages and layouts.
-    *   `(default)/`: Layout for main application pages.
-    *   `blog/`, `contact/`, etc.: Route groups for specific pages.
+    *   `(default)/`: Layout for main application pages (if used, currently pages are in root or specific route groups).
+    *   `blog/`, `contact/`, `feedback/`, `menu/`, `order/`, `reservations/`: Route groups for specific pages.
     *   `globals.css`: Global styles and Tailwind CSS theme variables.
     *   `layout.tsx`: Root layout for the entire application.
     *   `page.tsx`: Homepage.
 *   `src/components/`: Reusable React components.
-    *   `layout/`: Components related to overall page structure (Navbar, Footer, ThemeProvider).
-    *   `sections/`: Components specific to sections of a page (e.g., blog cards, menu items).
-    *   `shared/`: General-purpose shared components (Logo, SectionWrapper).
+    *   `layout/`: Components related to overall page structure (Navbar, Footer, ThemeProvider, ThemeToggle).
+    *   `sections/`: Components specific to sections of a page (e.g., blog cards, menu items, order summary).
+    *   `shared/`: General-purpose shared components (Logo, SectionWrapper, StarRatingDisplay, StarRatingInput).
     *   `ui/`: ShadCN UI components.
 *   `src/lib/`: Utility functions, constants, type definitions.
-    *   `constants.ts`: Application-wide constants (navigation links, mock data).
+    *   `constants.ts`: Application-wide constants (navigation links, mock data for awards, chefs, menu, reviews, blog posts).
     *   `types.ts`: TypeScript type definitions.
     *   `utils.ts`: Utility functions (e.g., `cn` for classnames).
+*   `src/hooks/`: Custom React hooks (e.g., `use-toast`, `use-mobile`).
 *   `src/ai/`: Genkit AI integration.
-    *   `genkit.ts`: Genkit initialization and configuration.
+    *   `genkit.ts`: Genkit initialization and configuration (specifies model).
     *   `dev.ts`: Development server entry point for Genkit.
-    *   `flows/`: (Conventionally where AI flows would be defined - currently empty in Culinary Canvas but part of the Genkit setup).
+    *   `flows/`: (Conventionally where AI flows would be defined - currently empty but part of the Genkit setup).
 *   `public/`: Static assets like images.
     *   `media/`: Contains images used throughout the application.
-*   `next.config.ts`: Next.js configuration file.
-*   `tailwind.config.ts`: Tailwind CSS configuration file.
+*   `next.config.ts`: Next.js configuration file (e.g., image remote patterns if any were used).
+*   `tailwind.config.ts`: Tailwind CSS configuration file (custom fonts, theme extensions).
 *   `components.json`: ShadCN UI configuration.
+*   `apphosting.yaml`: Firebase App Hosting configuration.
 
 ## 6. Contributing
 
@@ -291,4 +331,31 @@ Please ensure your code adheres to the existing coding style and includes tests 
 
 ## 7. License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details (if one exists, otherwise assume standard open source or proprietary as per project owner).
+This project is licensed under the MIT License. (Assuming MIT, common for open source. Update if different.)
+You can create a `LICENSE.md` file with the full MIT License text if desired.
+```
+LICENSE.md (Example content for MIT License):
+```
+MIT License
+
+Copyright (c) [Year] [Your Name/Company Name]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
