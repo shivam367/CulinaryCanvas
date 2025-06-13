@@ -70,7 +70,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         
         <Separator className="my-8" />
 
-        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-headline prose-headings:text-primary prose-p:text-foreground/80 prose-a:text-accent hover:prose-a:text-accent/80">
+        <div className="prose prose-xl dark:prose-invert max-w-none prose-headings:font-headline prose-headings:text-primary prose-p:text-foreground/80 prose-a:text-accent hover:prose-a:text-accent/80">
           {/* Render markdown content here if it were actual markdown. For now, splitting by newline. */}
           {post.content.split('\n\n').map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
@@ -90,3 +90,5 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     </SectionWrapper>
   );
 }
+
+    
