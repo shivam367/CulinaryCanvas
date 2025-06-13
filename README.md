@@ -205,7 +205,7 @@ If you plan to experiment with Genkit (even though it's not driving features cur
 
 1.  Clone the repository:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/shivam367/CulinaryCanvas.git
     cd culinary-canvas
     ```
 2.  Install dependencies:
